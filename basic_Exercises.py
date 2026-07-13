@@ -111,4 +111,24 @@ class TeamSportPlayer(Athlete):
         print(f"{self.name} plays for {self.team_name}.")    
 gal = TeamSportPlayer("Gal", 28, 10, "Maccabi") 
 gal.experience()
-gal.team_info()      
+gal.team_info() 
+
+# 7. Personal Best Tracking
+class Athlete:
+    def __init__(self,name, sport):
+        self.name =name
+        self.sport =sport
+        self.personal_best = None    
+    def set_record(self,value):
+        self.personal_best = value
+    def has_record(self):
+        return True if self.personal_best != None else False
+class Sprinter(Athlete):
+    def __init__(self, name):
+        super().__init__(name, sport = "100m Sprint")        
+usain = Sprinter("Usain")
+print(usain.__dict__)
+print(usain.has_record())
+usain.set_record(10.8)
+print(usain.has_record())
+print(usain.personal_best)

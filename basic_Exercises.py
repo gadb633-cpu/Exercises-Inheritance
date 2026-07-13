@@ -232,8 +232,29 @@ class AppSettings:
 app1 = AppSettings()
 app2 = AppSettings()
 print(app1.theme)
-print(app2.theme)
+print(app2.theme) # "dark"
 
 app1.theme = "gad"
-print(app2.theme)
+print(app2.theme) # "gad"
+
+# 3. Counter Singleton
+class Counter:
+    _instance = None
+    def __new__(cls):
+        if cls._instance == None:
+            cls._instance = super().__new__(cls)
+            cls.counter_count = 10
+        return cls._instance
+Counter1 = Counter()
+Counter2 = Counter()
+print(Counter1.counter_count)
+print(Counter2.counter_count)        
+Counter1.counter_count +=5
+Counter2.counter_count +=5
+print(Counter1.counter_count)
+print(Counter2.counter_count) 
+
+
+
+
 

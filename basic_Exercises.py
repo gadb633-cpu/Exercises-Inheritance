@@ -207,3 +207,54 @@ messi = ProfessionalAthlete("messi", 39, "football", "Nike")
 messi.greet()
 messi.train()
 messi.sponsor_info()
+
+# self learn: singleton
+# practice:
+# 1. Same Logger Object
+class Logger:
+    _instance = None
+    def __new__(cls):
+        if cls._instance == None:
+            cls._instance = super().__new__(cls)
+            print("gad")
+        return cls._instance
+gad = Logger()
+gad = Logger()
+
+# 2. Shared Settings
+class AppSettings:
+    _instance = None
+    def __new__(cls):
+        if cls._instance == None:
+            cls._instance = super().__new__(cls)
+            cls.theme = "dark"
+        return cls._instance
+app1 = AppSettings()
+app2 = AppSettings()
+print(app1.theme)
+print(app2.theme) # "dark"
+
+app1.theme = "gad"
+print(app2.theme) # "gad"
+
+# 3. Counter Singleton
+class Counter:
+    _instance = None
+    def __new__(cls):
+        if cls._instance == None:
+            cls._instance = super().__new__(cls)
+            cls.counter_count = 10
+        return cls._instance
+Counter1 = Counter()
+Counter2 = Counter()
+print(Counter1.counter_count)
+print(Counter2.counter_count)        
+Counter1.counter_count +=5
+Counter2.counter_count +=5
+print(Counter1.counter_count)
+print(Counter2.counter_count) 
+
+
+
+
+

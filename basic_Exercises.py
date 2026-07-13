@@ -221,5 +221,19 @@ class Logger:
 gad = Logger()
 gad = Logger()
 
+# 2. Shared Settings
+class AppSettings:
+    _instance = None
+    def __new__(cls):
+        if cls._instance == None:
+            cls._instance = super().__new__(cls)
+            cls.theme = "dark"
+        return cls._instance
+app1 = AppSettings()
+app2 = AppSettings()
+print(app1.theme)
+print(app2.theme)
 
+app1.theme = "gad"
+print(app2.theme)
 

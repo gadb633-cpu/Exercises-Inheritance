@@ -132,3 +132,32 @@ print(usain.has_record())
 usain.set_record(10.8)
 print(usain.has_record())
 print(usain.personal_best)
+
+# 8. Training Session Counter
+class Athlete:
+    def __init__(self,name, age):
+        self.name =name
+        self.age =age
+        self.sessions_completed = 0
+    def train(self):
+        self.sessions_completed +=1
+    def sessions_needed(self,target):
+        if target - self.sessions_completed < 0:
+            return 0
+        else:
+            return target - self.sessions_completed
+class Triathlete(Athlete):
+    def __init__(self, name, age,dcisipline):
+        super().__init__(name, age)         
+        self.dcisipline =dcisipline
+    def describe(self):
+        print(f"Triathlete {self.name}, age: {self.age}, discipline: {self.dcisipline}")
+dan = Triathlete("Dan", 26, "cycling")
+dan.describe()
+dan.train()            
+dan.train()            
+dan.train()            
+dan.train()            
+dan.train()
+print(f"{dan.sessions_completed} sessions completed")            
+print(f"{dan.sessions_needed(10)} more needed")
